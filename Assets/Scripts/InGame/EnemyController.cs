@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] float _speed = 4;
+    [SerializeField] float _weight = 1;
+    [SerializeField] int _xp = 4;
 
     private GameObject _player;
     private Rigidbody2D _rb;
@@ -12,6 +14,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _weight = GetComponent<Rigidbody2D>().mass;
     }
 
     public void Initialize( GameObject player )

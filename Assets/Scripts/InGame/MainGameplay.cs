@@ -9,6 +9,9 @@ public class MainGameplay : MonoBehaviour
     [SerializeField] GameObject _player;
     [SerializeField] List<EnemyController> _enemyControllers;
 
+    [SerializeField] private int _totalXp = 0;
+    
+
     private void Awake()
     {
         Instance = this;
