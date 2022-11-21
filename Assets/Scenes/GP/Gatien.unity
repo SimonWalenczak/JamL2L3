@@ -320,6 +320,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 89245324079580618, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2690613070735326826, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -346,7 +350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5256826202320299067, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
       propertyPath: orthographic size
-      value: 6.8010726
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 5256826202320299067, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -412,6 +416,10 @@ PrefabInstance:
       propertyPath: _prefabBullet
       value: 
       objectReference: {fileID: 8869494899662815501, guid: 4afba5d7b82f9d043ae93cc3b03404bf, type: 3}
+    - target: {fileID: 9015792307302742519, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
+      propertyPath: attackForce
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
 --- !u!114 &2051855685 stripped

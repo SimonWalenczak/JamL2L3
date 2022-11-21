@@ -24,7 +24,7 @@ public class BasicAttack : MonoBehaviour
             if (direction.sqrMagnitude > 0)
             {
                 direction.Normalize();
-                collision.GetComponent<Rigidbody2D>().AddForce(direction * attackForce, ForceMode2D.Impulse);
+                collision.GetComponent<Rigidbody2D>().AddForce(direction * attackForce, ForceMode2D.Force);
             }
         }       
     }
