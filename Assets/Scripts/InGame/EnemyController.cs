@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] float _speed = 4;
-    [SerializeField] float _weight = 1;
     [SerializeField] int _xp = 4;
 
     private GameObject _player;
@@ -19,11 +18,12 @@ public class EnemyController : MonoBehaviour
     [Header("Attack Force")]
     [SerializeField] private float attackForce;
 
+    private bool dead;
+
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _weight = GetComponent<Rigidbody2D>().mass;
     }
 
     public void Initialize( GameObject player )
@@ -33,20 +33,22 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
-        if (!isTouched)
+        if (!dead)
         {
-            MoveToPlayer();
-        }
-        else
-        {
-            timer += Time.deltaTime;
-            if (timer >= invincibilityTime)
+            if (!isTouched)
             {
-                timer = 0;
-                isTouched = false;
+                MoveToPlayer();
             }
-        }
-        
+            else
+            {
+                timer += Time.deltaTime;
+                if (timer >= invincibilityTime)
+                {
+                    timer = 0;
+                    isTouched = false;
+                }
+            }
+        }       
     }
 
     private void MoveToPlayer()
@@ -66,6 +68,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        Collider2D collider = GetComponent<Collider2D>();
+        Destroy(collider);
+        dead = true;
+        Destroy(this.gameObject, 5);
+
+        _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Player")
@@ -76,6 +88,7 @@ public class EnemyController : MonoBehaviour
             if (collision.gameObject.GetComponent<PlayerController>().isTouched == false)
             {
                 collision.gameObject.GetComponent<PlayerController>().isTouched = true;
+                collision.gameObject.GetComponent<PlayerController>().lastEnemyTouched = this.gameObject;
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * attackForce, ForceMode2D.Impulse);
             }
         }
