@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
 
     private float _timerCoolDown;
 
+    [Header("Invincibility frames")]
+    [SerializeField] private float invincibilityTime;
+    [System.NonSerialized] public bool isTouched = false;
+    private float timer;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,8 +25,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Move();
-        Shoot();
+        if (!isTouched)
+        {
+            Move();
+            Shoot();
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            if (timer >= invincibilityTime)
+            {
+                timer = 0;
+                isTouched = false;
+            }
+        }
     }
 
     private void Shoot()

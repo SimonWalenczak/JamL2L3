@@ -12,9 +12,12 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D _rb;
 
     [Header("Invincibility frames")]
-    [System.NonSerialized] public bool isTouched = false;
     [SerializeField] private float invincibilityTime;
+    [System.NonSerialized] public bool isTouched = false;   
     private float timer;
+
+    [Header("Attack Force")]
+    [SerializeField] private float attackForce;
 
 
     private void Awake()
@@ -60,6 +63,21 @@ public class EnemyController : MonoBehaviour
         else
         {
             _rb.velocity = Vector2.zero;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            Vector3 direction = collision.gameObject.transform.position - transform.position;
+            direction.Normalize();
+
+            if (collision.gameObject.GetComponent<PlayerController>().isTouched == false)
+            {
+                collision.gameObject.GetComponent<PlayerController>().isTouched = true;
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * attackForce, ForceMode2D.Impulse);
+            }
         }
     }
 }

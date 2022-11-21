@@ -343,7 +343,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabBullet: {fileID: 8869494899662815501, guid: 4afba5d7b82f9d043ae93cc3b03404bf, type: 3}
   _speed: 5
+  rb: {fileID: 0}
   _coolDown: 2
+  invincibilityTime: 0.3
 --- !u!114 &6268203021272068996
 MonoBehaviour:
   m_ObjectHideFlags: 0
