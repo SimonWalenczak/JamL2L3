@@ -6,6 +6,7 @@ using TMPro;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _xpBar;
     [SerializeField] private TextMeshProUGUI _xpText;
     [SerializeField] private Image _lifeBar;
     [SerializeField] private TextMeshProUGUI _killText;
