@@ -7,11 +7,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject _prefabBullet;
     [SerializeField] float _speed = 5;
+    [SerializeField] Rigidbody2D rb;
 
     [SerializeField] float _coolDown = 2;
 
     private float _timerCoolDown;
-    
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
         Move();
@@ -45,11 +51,16 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector2(horizontal, vertical);
+        direction.z = 0;
 
         if (direction.sqrMagnitude > 0)
         {
             direction.Normalize();
-            transform.position += direction * _speed * Time.deltaTime;
+            rb.velocity = direction * _speed;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 }

@@ -11,6 +11,12 @@ public class EnemyController : MonoBehaviour
     private GameObject _player;
     private Rigidbody2D _rb;
 
+    [Header("Invincibility frames")]
+    [System.NonSerialized] public bool isTouched = false;
+    [SerializeField] private float invincibilityTime;
+    private float timer;
+
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -24,8 +30,20 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
-        MoveToPlayer();
-
+        if (!isTouched)
+        {
+            MoveToPlayer();
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            if (timer >= invincibilityTime)
+            {
+                timer = 0;
+                isTouched = false;
+            }
+        }
+        
     }
 
     private void MoveToPlayer()
