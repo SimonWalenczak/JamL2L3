@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 772079200ec69c541bc71d04c14b9743
-      internalID: -845846310
+      spriteID: 200fbe5f7020c7b468eecde26546db69
+      internalID: -1939784795
       vertices: []
       indices: 
       edges: []
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd43254f474450340b9374bd8cb4bb33
-      internalID: -1007442464
+      spriteID: 378059b1a93108345847d2eb98723a58
+      internalID: -1159326987
       vertices: []
       indices: 
       edges: []
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1182d451629a3c84c96a2fa14d34fe1e
-      internalID: -1658984813
+      spriteID: c5d58d47bdd6afe479eb90c83c57c129
+      internalID: 823970479
       vertices: []
       indices: 
       edges: []
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1ef95e705d605444a661d7d367c4ff6
-      internalID: 1031595461
+      spriteID: edbf628680f5b1545861aeb1f2088720
+      internalID: 29978744
       vertices: []
       indices: 
       edges: []
@@ -214,8 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 592cd01260eeafd4185782744258db3b
-      internalID: -2000282362
+      spriteID: d587afd847f82a74eb9f7c8b902fc3dd
+      internalID: -1480610206
       vertices: []
       indices: 
       edges: []
@@ -235,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6c47e79b0fa54745891c375ae3fa8cf
-      internalID: -915535549
+      spriteID: b5fc771fdbc8f2040a5d58fd80deef69
+      internalID: -22276646
       vertices: []
       indices: 
       edges: []
@@ -252,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SheetAlienOvni1_5: -915535549
-      SheetAlienOvni1_1: -1007442464
-      SheetAlienOvni1_4: -2000282362
-      SheetAlienOvni1_0: -845846310
-      SheetAlienOvni1_3: 1031595461
-      SheetAlienOvni1_2: -1658984813
+      SheetAlienOvni1_5: -22276646
+      SheetAlienOvni1_1: -1159326987
+      SheetAlienOvni1_4: -1480610206
+      SheetAlienOvni1_0: -1939784795
+      SheetAlienOvni1_3: 29978744
+      SheetAlienOvni1_2: 823970479
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
