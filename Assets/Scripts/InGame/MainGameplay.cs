@@ -9,22 +9,24 @@ public class MainGameplay : MonoBehaviour
     [SerializeField] GameObject _player;
     [SerializeField] List<EnemyController> _enemyControllers;
 
-    [SerializeField] private int _totalXp = 0;
-    
 
     private void Awake()
     {
         Instance = this;
+
+        GameData.ShootPower = 1;
+        GameData.MultipScoring = 1;
+        GameData._coolDownUltReduc = 0;
+        GameData._kill = 0;
+        GameData._totalXp = 0;
     }
 
     void Start()
     {
-
         foreach (var enemy in _enemyControllers)
         {
             enemy.Initialize(_player);
         }
-
     }
 
     public EnemyController GetClosestEnemy( Vector3 position  )
