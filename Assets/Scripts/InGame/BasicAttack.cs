@@ -6,20 +6,21 @@ public class BasicAttack : MonoBehaviour
 {
     [Header("Attack Variables")]
     [SerializeField] private LayerMask enemies;
+    [SerializeField] private Transform pivot;
     [SerializeField] private float attackForce;
 
-    private Transform player;
+    
 
     private void Start()
     {
-        player = GetComponentInParent<Transform>();
+        pivot = GetComponentInParent<Transform>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == enemies)
         {
-            Vector3 direction = collision.gameObject.transform.position - player.position;
+            Vector3 direction = collision.gameObject.transform.position - pivot.position;
             
             if (direction.sqrMagnitude > 0)
             {
