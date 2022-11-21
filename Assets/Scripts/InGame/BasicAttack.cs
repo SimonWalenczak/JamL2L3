@@ -9,8 +9,6 @@ public class BasicAttack : MonoBehaviour
     [SerializeField] private Transform pivot;
     [SerializeField] private float attackForce;
 
-    
-
     private void Start()
     {
         pivot = GetComponentInParent<Transform>();
@@ -18,15 +16,16 @@ public class BasicAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == enemies)
+        if ( UnityExtensions.Contains(enemies, collision.gameObject.layer))
         {
             Vector3 direction = collision.gameObject.transform.position - pivot.position;
-            
-            if (direction.sqrMagnitude > 0)
+            direction.Normalize();
+
+            if (collision.gameObject.GetComponent<EnemyController>().isTouched == false)
             {
-                direction.Normalize();
-                collision.GetComponent<Rigidbody2D>().AddForce(direction * attackForce, ForceMode2D.Force);
-            }
+                collision.gameObject.GetComponent<EnemyController>().isTouched = true;
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * attackForce, ForceMode2D.Impulse);
+            }          
         }       
-    }
+    }    
 }
