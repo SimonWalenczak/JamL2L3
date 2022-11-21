@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [System.NonSerialized] public bool isTouched = false;
     private float timer;
 
+    private bool dead = false;
+    public GameObject lastEnemyTouched = null;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,20 +28,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isTouched)
+        if (!dead)
         {
-            Move();
-            Shoot();
-        }
-        else
-        {
-            timer += Time.deltaTime;
-            if (timer >= invincibilityTime)
+            if (!isTouched)
             {
-                timer = 0;
-                isTouched = false;
+                Move();
+                Shoot();
             }
-        }
+            else
+            {
+                timer += Time.deltaTime;
+                if (timer >= invincibilityTime)
+                {
+                    timer = 0;
+                    isTouched = false;
+                }
+            }
+        }     
     }
 
     private void Shoot()
@@ -79,5 +85,14 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+    }
+
+    public void Die()
+    {
+        Collider2D collider = GetComponent<Collider2D>();
+        Destroy(collider);
+        dead = true;
+
+        rb.velocity = (transform.position - lastEnemyTouched.transform.position) * 3f;
     }
 }
