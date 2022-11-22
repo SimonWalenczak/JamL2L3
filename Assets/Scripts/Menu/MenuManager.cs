@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _creditsPanel;
-    
+    [SerializeField] private GameObject _slider;
+
+    IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(1);
+    }
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        _slider.SetActive(true);
+        StartCoroutine(LoadScene());
     }
 
     public void Credits()
