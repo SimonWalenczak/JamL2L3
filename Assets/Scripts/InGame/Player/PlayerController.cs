@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public  float _currentCoolDownUlt = GameData.CoolDownUlt;
 
     private Animator _animator;
+
+    private Vector2 scale;
     
     [Header("Invincibility frames")]
     [SerializeField] private float invincibilityTime;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        scale = transform.localScale;
     }
 
     void Update()
@@ -104,6 +107,15 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("_isMoving", true);
             direction.Normalize();
             rb.velocity = direction * _speed;
+
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector2(scale.x, scale.y);
+            }
+            if (direction.x < 0)
+            {
+                transform.localScale = new Vector2(-scale.x, scale.y);
+            }
         }
         else
         {
