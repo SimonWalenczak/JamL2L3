@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject _prefabBullet;
+    [SerializeField] GameObject _ultimateArea;
+    [SerializeField] float ultimateTime;
     [SerializeField] float _speed = 5;
     [SerializeField] Rigidbody2D rb;
 
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
             
             if (_currentCoolDownUlt <= 0 && Input.GetKeyDown(KeyCode.Space))
             {
-                //Activation de l'ultimate
+                StartCoroutine(Ultimate());
                 _currentCoolDownUlt = GameData.CoolDownUlt;
             }
         }     
@@ -75,6 +77,13 @@ public class PlayerController : MonoBehaviour
             go.GetComponent<Bullet>().Initialize(direction);
         }
 
+    }
+
+    IEnumerator Ultimate()
+    {
+        _ultimateArea.SetActive(true);
+        yield return new WaitForSeconds(ultimateTime);
+        _ultimateArea.SetActive(false);
     }
 
     private void Move()
