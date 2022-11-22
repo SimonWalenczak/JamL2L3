@@ -11,13 +11,9 @@ public class MainGameplay : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        GameData.ShootPower = 1;
-        GameData.MultipScoring = 1;
-        GameData._coolDownUltReduc = 0;
         GameData._kill = 0;
         GameData._currentXp = 0;
-        GameData._totalXp = 0;
+        GameData._score = 0;
     }
 
     public void AddToList(GameObject enemy)

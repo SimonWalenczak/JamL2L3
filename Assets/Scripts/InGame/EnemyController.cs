@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         Initialize(player);
         MainGameplay.Instance.AddToList(this.gameObject);
+        _upgradeManager = UpgradeManager.Instance;
     }
 
     public void Initialize( GameObject player )
@@ -105,7 +106,7 @@ public class EnemyController : MonoBehaviour
         _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
         GameData._kill++;
         GameData._currentXp += _xp;
-        GameData._score += ((int)(_score * _upgradeManager.MultiplyScoreUpValue[_upgradeManager.MultiplyScoreIndex]));
+        GameData._score += (int)(_score * _upgradeManager.MultiplyScoreUpValue[_upgradeManager.MultiplyScoreIndex]);
     }
     
     public void DieHole()
@@ -119,7 +120,7 @@ public class EnemyController : MonoBehaviour
         _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
         GameData._kill++;
         GameData._currentXp += _xp;
-        GameData._score += ((int)(_score * _upgradeManager.MultiplyScoreUpValue[_upgradeManager.MultiplyScoreIndex]));
+        GameData._score += (int)(_score * _upgradeManager.MultiplyScoreUpValue[_upgradeManager.MultiplyScoreIndex]);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

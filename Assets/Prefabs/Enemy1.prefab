@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72234ab1ba934a944b689279ce53ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeManager: {fileID: 1909550779140045709, guid: a93c8696704496140b5d4933697ddf3b, type: 3}
+  _upgradeManager: {fileID: 0}
   _speed: 4
   _xp: 5
   _score: 10

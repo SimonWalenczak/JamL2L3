@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public static UpgradeManager Instance;
     public GameObject UpgradePanel;
     
     public PlayerController _playerController;
@@ -21,7 +22,7 @@ public class UpgradeManager : MonoBehaviour
     [Header("Value MultiplyScore")]
     public GameObject MultiplyScoreButton;
     public List<float> MultiplyScoreUpValue;
-    public int MultiplyScoreIndex = 0;
+    public int MultiplyScoreIndex = 1;
     
     [Header("Value CoolDownReduction")]
     public GameObject CoolDownReductionButton;
@@ -42,6 +43,11 @@ public class UpgradeManager : MonoBehaviour
     public GameObject ShootSpeedButton;
     public float ShootSpeedUpValue;
     public int ShootSpeedIndex = 0;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
