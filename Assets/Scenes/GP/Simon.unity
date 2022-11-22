@@ -1120,6 +1120,8 @@ MonoBehaviour:
   _killText: {fileID: 1277416819}
   _coolDownUltText: {fileID: 1266087918}
   _scoreText: {fileID: 1039706896}
+  _currentLevelBar: 0
+  levelXpBar: 64000000c8000000
 --- !u!114 &864632364
 MonoBehaviour:
   m_ObjectHideFlags: 0
