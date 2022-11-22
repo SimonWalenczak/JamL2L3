@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] GameObject _prefabBullet;
+    //[SerializeField] GameObject _prefabBullet;
     [SerializeField] GameObject _ultimateArea;
     [SerializeField] float ultimateTime;
     [SerializeField] float _speed = 5;
     [SerializeField] Rigidbody2D rb;
 
-    [SerializeField] float _coolDownAttack = 2;
+    //[SerializeField] float _coolDownAttack = 2;
     private float _timerCoolDownAttack;
 
     public float _currentCoolDownUlt;
     public float _maxCurrentCoolDownUlt;
+
+    [SerializeField] private GameObject _weapon;
 
     private Animator _animator;
 
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
             if (!isTouched)
             {
                 Move();
-                Shoot();
+                //Shoot();
             }
             else
             {
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
         }     
     }
 
-    private void Shoot()
+    /*private void Shoot()
     {
         _timerCoolDownAttack += Time.deltaTime;
 
@@ -88,7 +90,7 @@ public class PlayerController : MonoBehaviour
             direction.Normalize();
             go.GetComponent<Bullet>().Initialize(direction);
         }
-    }
+    }*/
 
     IEnumerator Ultimate()
     {
@@ -132,6 +134,7 @@ public class PlayerController : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         Destroy(collider);
         dead = true;
+        _weapon.SetActive(false);
         _animator.SetBool("_isDead", true);
         rb.velocity = (transform.position - lastEnemyTouched.transform.position) * 3f;
     }

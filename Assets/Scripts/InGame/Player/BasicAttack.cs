@@ -7,7 +7,7 @@ public class BasicAttack : MonoBehaviour
     [Header("Attack Variables")]
     [SerializeField] private LayerMask enemies;
     [SerializeField] private Transform pivot;
-    [SerializeField] private float attackForce;
+    [SerializeField] public float attackForce;
 
     private void Start()
     {
