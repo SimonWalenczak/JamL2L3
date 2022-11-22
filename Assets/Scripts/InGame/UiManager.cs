@@ -8,6 +8,9 @@ using Unity.VisualScripting;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _slideIn;
+    public GameObject _slideOut;
+    
     [SerializeField] private GameObject _pausedMenu;
     [SerializeField] private GameObject _xpPanel;
     [SerializeField] private Image _xpBar;
@@ -23,6 +26,17 @@ public class UiManager : MonoBehaviour
     public bool _inUpgradeMode;
     
     [SerializeField] PlayerController _playerController;
+
+    IEnumerator SlideIn()
+    {
+        yield return new WaitForSeconds(2);
+        _slideIn.SetActive(false);
+    }
+    private void Start()
+    {
+        StartCoroutine(SlideIn());
+    }
+
     private void Update()
     {
         _xpBar.fillAmount = (float)GameData._currentXp / (float)levelXpBar[_currentLevelBar];
@@ -72,8 +86,5 @@ public class UiManager : MonoBehaviour
             _pausedMenu.SetActive(!_pausedMenu.activeSelf);
         }
         #endregion
-
-        if (Input.GetKeyDown(KeyCode.O))
-            GameData._currentXp += 10;
     }
 }

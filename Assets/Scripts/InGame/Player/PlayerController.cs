@@ -2,16 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] GameObject _prefabBullet;
+    public UiManager _uiManager;
     [SerializeField] GameObject _ultimateArea;
     [SerializeField] float ultimateTime;
     public float _speed = 5;
     [SerializeField] Rigidbody2D rb;
 
-    //[SerializeField] float _coolDownAttack = 2;
     private float _timerCoolDownAttack;
 
     public float _currentCoolDownUlt;
@@ -72,26 +72,6 @@ public class PlayerController : MonoBehaviour
         }     
     }
 
-    /*private void Shoot()
-    {
-        _timerCoolDownAttack += Time.deltaTime;
-
-        if (_timerCoolDownAttack < _coolDownAttack)
-            return;
-
-        _timerCoolDownAttack -= _coolDownAttack;
-        GameObject go = GameObject.Instantiate(_prefabBullet, transform.position, Quaternion.identity);
-
-        EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
-
-        Vector3 direction = enemy.transform.position - transform.position;
-        if (direction.sqrMagnitude > 0)
-        {
-            direction.Normalize();
-            go.GetComponent<Bullet>().Initialize(direction);
-        }
-    }*/
-
     IEnumerator Ultimate()
     {
         _ultimateArea.SetActive(true);
@@ -137,6 +117,7 @@ public class PlayerController : MonoBehaviour
         _weapon.SetActive(false);
         _animator.SetBool("_isDead", true);
         rb.velocity = (transform.position - lastEnemyTouched.transform.position) * 3f;
+        StartCoroutine(SlideOut());
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -148,5 +129,13 @@ public class PlayerController : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.position - transform.position, ForceMode2D.Force);
             }
         }
+    }
+
+    IEnumerator SlideOut()
+    {
+        yield return new WaitForSeconds(2);
+        _uiManager._slideOut.SetActive(true);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(2);
     }
 }
