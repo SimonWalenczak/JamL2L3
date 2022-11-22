@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     private float timer;
 
     private bool dead = false;
-    private bool deadInHole = false;
     public GameObject lastEnemyTouched = null;
 
     private void Start()

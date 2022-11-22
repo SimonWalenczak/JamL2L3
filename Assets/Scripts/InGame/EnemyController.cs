@@ -20,7 +20,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackForce;
 
     private bool dead;
+    private bool deadInHole = false;
 
+
+    [SerializeField] Vector3 scaleChange = new Vector3(-0.01f, -0.01f, -0.01f);
     [SerializeField] float rotationSpeed = 2f;
 
 
@@ -59,9 +62,13 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
-        else
+        else if (dead)
         {
             this.transform.Rotate(new Vector3(0, 0, rotationSpeed), Space.World);
+        }
+        else if (dead && deadInHole)
+        {
+            this.transform.localScale += scaleChange;
         }
     }
 
@@ -87,6 +94,20 @@ public class EnemyController : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         Destroy(collider);
         dead = true;
+        Destroy(this.gameObject, 5);
+
+        _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
+        GameData._kill++;
+        GameData._currentXp += _xp;
+        GameData._score += _score;
+    }
+    
+    public void DieHole()
+    {
+        Collider2D collider = GetComponent<Collider2D>();
+        Destroy(collider);
+        dead = true;
+        deadInHole = true;
         Destroy(this.gameObject, 5);
 
         _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
