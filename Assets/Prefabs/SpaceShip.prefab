@@ -1519,6 +1519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2216906403568179186}
   - component: {fileID: 2216906403568178189}
+  - component: {fileID: 6644224649349210239}
   m_Layer: 0
   m_Name: Hublot
   m_TagString: Untagged
@@ -1593,6 +1594,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &6644224649349210239
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216906403568179187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.4}
+    newSize: {x: 0.5, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.25131166, y: -0.019172318}
+      - {x: -0.20855913, y: -0.10231689}
+      - {x: -0.10466406, y: -0.17441252}
+      - {x: 0.008550629, y: -0.19744202}
+      - {x: 0.15172334, y: -0.15887026}
+      - {x: 0.2219889, y: -0.09575478}
+      - {x: 0.25385594, y: -0.047613695}
+      - {x: 0.23768832, y: 0.0486742}
+      - {x: 0.15231684, y: 0.1564265}
+      - {x: 0.05134275, y: 0.19871469}
+      - {x: -0.014582868, y: 0.19999997}
+      - {x: -0.12458615, y: 0.1737675}
+      - {x: -0.21983261, y: 0.084260516}
 --- !u!1 &2216906403721603135
 GameObject:
   m_ObjectHideFlags: 0
