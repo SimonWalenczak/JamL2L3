@@ -26,6 +26,12 @@ public class EnemyController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        GameObject player = GameObject.Find("Player");
+        Initialize(player);
+    }
+
     public void Initialize( GameObject player )
     {
         _player = player;
