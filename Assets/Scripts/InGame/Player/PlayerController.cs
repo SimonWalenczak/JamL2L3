@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioManager _audioManager;
+    private AudioSource _audioSource;
     public UiManager _uiManager;
     [SerializeField] GameObject _ultimateArea;
     [SerializeField] float ultimateTime;
@@ -33,14 +35,37 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask enemies;
 
+    [SerializeField] private bool _canSoundWalk;
+    [SerializeField] private bool _canSoundHit;
+    [SerializeField] private bool _canSoundDead;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         scale = transform.localScale;
         _currentCoolDownUlt = _maxCurrentCoolDownUlt;
+        _audioSource = GetComponent<AudioSource>();
+        _canSoundWalk = true;
+        _canSoundHit = true;
+        _canSoundDead = true;
     }
 
+    IEnumerator SoundWalkWaiting()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _canSoundWalk = true;
+    }
+    IEnumerator SoundHitWaiting()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _canSoundHit = true;
+    }
+    IEnumerator SoundDeadWaiting()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _canSoundDead = true;
+    }
+    
     void Update()
     {
         if (!dead)
@@ -53,6 +78,13 @@ public class PlayerController : MonoBehaviour
             else
             {
                 _animator.SetBool("_isHit", true);
+                if (_canSoundHit)
+                {
+                    _canSoundHit = false;
+                    _audioSource.clip = _audioManager.AudioClips[1];
+                    _audioSource.Play();
+                    StartCoroutine(SoundHitWaiting());
+                }
                 timer += Time.deltaTime;
                 if (timer >= invincibilityTime)
                 {
@@ -89,6 +121,13 @@ public class PlayerController : MonoBehaviour
 
         if (direction.sqrMagnitude > 0)
         {
+            if (_canSoundWalk)
+            {
+                _canSoundWalk = false;
+                _audioSource.clip = _audioManager.AudioClips[0];
+                _audioSource.Play();
+                StartCoroutine(SoundWalkWaiting());
+            }
             _animator.SetBool("_isMoving", true);
             direction.Normalize();
             rb.velocity = direction * _speed;
@@ -113,6 +152,13 @@ public class PlayerController : MonoBehaviour
     {
         Collider2D collider = GetComponent<Collider2D>();
         Destroy(collider);
+        if (_canSoundDead)
+        {
+            _canSoundDead = false;
+            _audioSource.clip = _audioManager.AudioClips[2];
+            _audioSource.Play();
+            StartCoroutine(SoundDeadWaiting());
+        }
         dead = true;
         _weapon.SetActive(false);
         _animator.SetBool("_isDead", true);

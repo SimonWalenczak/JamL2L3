@@ -11,6 +11,7 @@ public class FinalSceneManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private TextMeshProUGUI _killText;
 
+    [SerializeField] private GameObject _slider;
     private void Update()
     {
         _scoreText.SetText("Score : " + GameData._score.ToString());
@@ -20,6 +21,13 @@ public class FinalSceneManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        _slider.SetActive(true);
+        StartCoroutine(SwitchScene());
+    }
+
+    IEnumerator SwitchScene()
+    {
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(0);
     }
 }
