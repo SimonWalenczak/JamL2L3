@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject _prefabBullet;
+    [SerializeField] GameObject _ultimateArea;
+    [SerializeField] float ultimateTime;
     [SerializeField] float _speed = 5;
     [SerializeField] Rigidbody2D rb;
 
@@ -13,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private float _timerCoolDownAttack;
 
     public  float _currentCoolDownUlt = GameData.CoolDownUlt;
+
+    private Animator _animator;
+
+    private Vector2 scale;
     
     [Header("Invincibility frames")]
     [SerializeField] private float invincibilityTime;
@@ -25,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        scale = transform.localScale;
     }
 
     void Update()
@@ -38,11 +46,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                _animator.SetBool("_isHit", true);
                 timer += Time.deltaTime;
                 if (timer >= invincibilityTime)
                 {
                     timer = 0;
                     isTouched = false;
+                    _animator.SetBool("_isHit", false);
                 }
             }
 
@@ -50,7 +60,7 @@ public class PlayerController : MonoBehaviour
             
             if (_currentCoolDownUlt <= 0 && Input.GetKeyDown(KeyCode.Space))
             {
-                //Activation de l'ultimate
+                StartCoroutine(Ultimate());
                 _currentCoolDownUlt = GameData.CoolDownUlt;
             }
         }     
@@ -77,6 +87,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    IEnumerator Ultimate()
+    {
+        _ultimateArea.SetActive(true);
+        yield return new WaitForSeconds(ultimateTime);
+        _ultimateArea.SetActive(false);
+    }
+
     private void Move()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -87,11 +104,22 @@ public class PlayerController : MonoBehaviour
 
         if (direction.sqrMagnitude > 0)
         {
+            _animator.SetBool("_isMoving", true);
             direction.Normalize();
             rb.velocity = direction * _speed;
+
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector2(scale.x, scale.y);
+            }
+            if (direction.x < 0)
+            {
+                transform.localScale = new Vector2(-scale.x, scale.y);
+            }
         }
         else
         {
+            _animator.SetBool("_isMoving", false);
             rb.velocity = Vector2.zero;
         }
     }
@@ -101,7 +129,7 @@ public class PlayerController : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         Destroy(collider);
         dead = true;
-
+        _animator.SetBool("_isDead", true);
         rb.velocity = (transform.position - lastEnemyTouched.transform.position) * 3f;
     }
 }
