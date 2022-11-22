@@ -18,6 +18,7 @@ public class MainGameplay : MonoBehaviour
         GameData.MultipScoring = 1;
         GameData._coolDownUltReduc = 0;
         GameData._kill = 0;
+        GameData._currentXp = 0;
         GameData._totalXp = 0;
     }
 
