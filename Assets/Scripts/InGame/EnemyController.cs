@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
 
     private bool dead;
 
+    [SerializeField] float rotationSpeed = 2f;
+
 
     private void Awake()
     {
@@ -56,7 +58,11 @@ public class EnemyController : MonoBehaviour
                     isTouched = false;
                 }
             }
-        }       
+        }
+        else
+        {
+            this.transform.Rotate(new Vector3(0, 0, rotationSpeed), Space.World);
+        }
     }
 
     private void MoveToPlayer()

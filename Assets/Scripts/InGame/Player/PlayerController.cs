@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float timer;
 
     private bool dead = false;
+    private bool deadInHole = false;
     public GameObject lastEnemyTouched = null;
 
     private void Start()
@@ -48,7 +49,8 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.T))
             {
-                //Fonction de l'ult
+                //Activation de l'ultimate
+                
             }
         }     
     }

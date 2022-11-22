@@ -5,23 +5,58 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("MinMax Values")]
-    [SerializeField] private Vector2 radiusMinMax;
-    [SerializeField] private GameObject enemySpawn;
+    //[SerializeField] private Vector2 radiusMinMax;
+    [SerializeField] private GameObject quad;
+    [SerializeField] private List<GameObject> spawnPool;
+    [SerializeField] private int numberToSpawn;
 
     [Header("Enemy Tick Rate")]
     [SerializeField] private float timeForSpawn;
 
     private void Start()
     {
-        Spawn();
+        SpawnEnemy();
         StartCoroutine(TickSpawn());
     }
 
     IEnumerator TickSpawn()
     {
         yield return new WaitForSeconds(timeForSpawn);
-        Spawn();
+        SpawnEnemy();
         StartCoroutine(TickSpawn());
+    }
+
+    
+
+    public void SpawnEnemy()
+    {
+        int randomEnemy = 0;
+        GameObject toSpawn;
+        MeshCollider c = quad.GetComponent<MeshCollider>();
+
+        float posX;
+        float posY;
+        Vector2 pos;
+
+        for (int i = 0; i < numberToSpawn; i++)
+        {
+            randomEnemy = Random.Range(0, spawnPool.Count);
+            toSpawn = spawnPool[randomEnemy];
+
+            posX = Random.Range(c.bounds.min.x, c.bounds.max.x);
+            posY = Random.Range(c.bounds.min.y, c.bounds.max.y);
+            pos = new Vector2(posX, posY);
+
+            Instantiate(toSpawn, pos, toSpawn.transform.rotation);
+        }
+
+    }
+
+    /*void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radiusMinMax.x);
+        Gizmos.DrawWireSphere(transform.position, radiusMinMax.y);
     }
 
     public void Spawn()
@@ -29,34 +64,27 @@ public class EnemySpawner : MonoBehaviour
         float X = Random.Range(radiusMinMax.x, radiusMinMax.y);
         float Y = Random.Range(radiusMinMax.x, radiusMinMax.y);
 
-        Vector2 spawnPoint = new Vector2(X, Y);
+        float distanceFromSpawn = new Vector3(X + this.transform.position.x, Y + this.transform.position.y, 0f).sqrMagnitude;
 
-        float distanceFromSpawn = Vector3.Magnitude(new Vector3(X, Y, 0f) - this.transform.position);
-        
+
         bool spawn = false;
         
-        while (spawn == true)
+        while (spawn == false)
         {
             if (distanceFromSpawn > radiusMinMax.y)
             {
                 if (distanceFromSpawn < radiusMinMax.x)
                 {
                     Debug.Log(distanceFromSpawn);
-                    Instantiate(enemySpawn, new Vector3(X, Y, 0f), Quaternion.identity);
+                    Instantiate(enemySpawn, new Vector3(X + this.transform.position.x, Y + this.transform.position.y, 0f), Quaternion.identity);
                     spawn = true;                   
                 }
             }
             X = Random.Range(radiusMinMax.x, radiusMinMax.y);
             Y = Random.Range(radiusMinMax.x, radiusMinMax.y);
+            Debug.Log(X + " & " + Y);
 
-            distanceFromSpawn = Vector3.Magnitude(new Vector3(X, Y, 0f) - this.transform.position);
+            distanceFromSpawn = new Vector3(X + this.transform.position.x, Y + this.transform.position.y, 0f).sqrMagnitude;
         }      
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radiusMinMax.x);
-        Gizmos.DrawWireSphere(transform.position, radiusMinMax.y);
-    }
+    }*/
 }
