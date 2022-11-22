@@ -7,6 +7,7 @@ using TMPro;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _pausedMenu;
     [SerializeField] private GameObject _xpPanel;
     [SerializeField] private Image _lifeBar;
     [SerializeField] private TextMeshProUGUI _killText;
@@ -15,17 +16,30 @@ public class UiManager : MonoBehaviour
 
     private int levelXpBar = 0;
 
+    private bool _isPaused;
     private void Update()
     {
         //_lifeBar.fillAmount = GameData.
         _coolDownUltText.SetText("88");
         _killText.SetText(GameData._kill.ToString());
-        _scoreText.SetText(GameData._score.ToString());
+        _scoreText.SetText("Score : " + GameData._score.ToString());
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0;
+            if (!_isPaused)
+            {
+                Time.timeScale = 0;
+                _isPaused = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                _isPaused = false;
+            }
+
+            
             _xpPanel.SetActive(!_xpPanel.activeSelf);
+            _pausedMenu.SetActive(!_pausedMenu.activeSelf);
         }
     }
 }
