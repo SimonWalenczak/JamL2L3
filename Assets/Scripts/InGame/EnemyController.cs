@@ -85,6 +85,8 @@ public class EnemyController : MonoBehaviour
 
         _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
         GameData._kill++;
+        GameData._currentXp += _xp;
+        GameData._score += _score;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
