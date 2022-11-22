@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: Nom
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_text: Augmente la puissance du joueur.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_text: Nom
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -742,7 +742,7 @@ MonoBehaviour:
   m_text: 'Score : 888888'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_text: Nom
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_text: 00:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_text: 88
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_text: 8888
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_text: Augmente la puissance du joueur.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2385,7 +2385,7 @@ MonoBehaviour:
   m_text: Augmente la puissance du joueur.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
-  m_sharedMaterial: {fileID: -3852086137740239964, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
+  m_sharedMaterial: {fileID: 3618867558830787844, guid: cf4faeba7ac2ddf44972479330aecc50, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
