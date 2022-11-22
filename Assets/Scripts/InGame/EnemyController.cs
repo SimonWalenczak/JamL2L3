@@ -69,6 +69,10 @@ public class EnemyController : MonoBehaviour
         else if (dead && deadInHole)
         {
             this.transform.localScale += scaleChange;
+            if (transform.localScale.x <= 0)
+            {
+                transform.localScale = Vector3.zero;
+            }
             _rb.velocity = Vector2.zero;
         }
     }

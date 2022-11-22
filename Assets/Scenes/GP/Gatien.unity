@@ -1130,6 +1130,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
       value: -0.28960913
       objectReference: {fileID: 0}
+    - target: {fileID: 5256826202320299067, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5816785124757694781, guid: 93f414e38f93d8e4e8572a4c1d537e3d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1783,6 +1787,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 459313355057719656, guid: a93c8696704496140b5d4933697ddf3b, type: 3}
+      propertyPath: timeForSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 459313355057719656, guid: a93c8696704496140b5d4933697ddf3b, type: 3}
+      propertyPath: numberToSpawn
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 459313355057719657, guid: a93c8696704496140b5d4933697ddf3b, type: 3}
       propertyPath: m_RootOrder
       value: 2

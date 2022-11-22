@@ -103,8 +103,8 @@ MonoBehaviour:
   _xp: 4
   _score: 10
   invincibilityTime: 0.5
-  attackForce: 12
-  scaleChange: {x: -0.01, y: -0.01, z: -0.01}
+  attackForce: 7
+  scaleChange: {x: -0.02, y: -0.02, z: -0.02}
   rotationSpeed: 2
 --- !u!58 &14303562397558264
 CircleCollider2D:
