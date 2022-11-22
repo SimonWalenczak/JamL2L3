@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _coolDownAttack = 2;
     private float _timerCoolDownAttack;
 
-    public float CoolDownUlt = 10f;
-
+    public  float _currentCoolDownUlt = GameData.CoolDownUlt;
+    
     [Header("Invincibility frames")]
     [SerializeField] private float invincibilityTime;
     [System.NonSerialized] public bool isTouched = false;
@@ -46,10 +46,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.T))
+            _currentCoolDownUlt -= Time.deltaTime;
+            
+            if (_currentCoolDownUlt <= 0 && Input.GetKeyDown(KeyCode.Space))
             {
                 //Activation de l'ultimate
-                
+                _currentCoolDownUlt = GameData.CoolDownUlt;
             }
         }     
     }

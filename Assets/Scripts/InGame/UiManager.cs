@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UiManager : MonoBehaviour
 {
@@ -18,13 +19,23 @@ public class UiManager : MonoBehaviour
     [SerializeField] List<int> levelXpBar = new List<int>();
 
     private bool _isPaused;
+
+    [SerializeField] PlayerController _playerController;
     private void Update()
     {
         _xpBar.fillAmount = (float)GameData._currentXp / (float)levelXpBar[_currentLevelBar];
-        _coolDownUltText.SetText("88");
         _killText.SetText(GameData._kill.ToString());
         _scoreText.SetText("Score : " + GameData._score.ToString());
 
+        if (_playerController._currentCoolDownUlt <= 0)
+        {
+            _coolDownUltText.SetText("");
+        }
+        else
+        {
+            _coolDownUltText.SetText(((int)(_playerController._currentCoolDownUlt)).ToString());
+        }
+        
         #region Debug
         if (Input.GetKeyDown(KeyCode.O))
         {
