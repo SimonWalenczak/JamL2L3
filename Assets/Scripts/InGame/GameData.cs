@@ -6,6 +6,7 @@ public class GameData
 {
     public static float ShootPower = 1;
     public static int MultipScoring = 1;
+    public static float CoolDownUlt = 10;
     public static int _coolDownUltReduc = 0; //per second
 
     public static int _kill;
