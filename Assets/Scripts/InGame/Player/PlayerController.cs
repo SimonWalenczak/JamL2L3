@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.T))
             {
-                //Fonction de l'ult
+                //Activation de l'ultimate
+                
             }
         }     
     }

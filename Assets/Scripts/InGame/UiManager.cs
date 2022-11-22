@@ -9,7 +9,7 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField] private GameObject _pausedMenu;
     [SerializeField] private GameObject _xpPanel;
-    [SerializeField] private Image _lifeBar;
+    [SerializeField] private Image _xpBar;
     [SerializeField] private TextMeshProUGUI _killText;
     [SerializeField] private TextMeshProUGUI _coolDownUltText;
     [SerializeField] private TextMeshProUGUI _scoreText;
@@ -20,17 +20,19 @@ public class UiManager : MonoBehaviour
     private bool _isPaused;
     private void Update()
     {
-        _lifeBar.fillAmount = (float)GameData._currentXp / (float)levelXpBar[_currentLevelBar];
+        _xpBar.fillAmount = (float)GameData._currentXp / (float)levelXpBar[_currentLevelBar];
         _coolDownUltText.SetText("88");
-        // _killText.SetText(GameData._kill.ToString());
-        _killText.SetText(GameData._currentXp.ToString());
+        _killText.SetText(GameData._kill.ToString());
         _scoreText.SetText("Score : " + GameData._score.ToString());
 
+        #region Debug
         if (Input.GetKeyDown(KeyCode.O))
         {
             GameData._currentXp += 10;
         }
-        
+        #endregion
+
+        #region Affichage XP
         if (_currentLevelBar+1 < levelXpBar.Count && GameData._currentXp >= levelXpBar[_currentLevelBar])
         { 
             GameData._currentXp = 0; 
@@ -40,7 +42,9 @@ public class UiManager : MonoBehaviour
         { 
             GameData._currentXp = levelXpBar[_currentLevelBar];
         }
+        #endregion
 
+        #region Pause
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!_isPaused)
@@ -57,5 +61,6 @@ public class UiManager : MonoBehaviour
             _xpPanel.SetActive(!_xpPanel.activeSelf);
             _pausedMenu.SetActive(!_pausedMenu.activeSelf);
         }
+        #endregion
     }
 }
