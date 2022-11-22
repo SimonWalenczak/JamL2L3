@@ -66,6 +66,7 @@ MonoBehaviour:
   _xpBar: {fileID: 0}
   _killText: {fileID: 0}
   _coolDownUltText: {fileID: 0}
+  _pressSpaceText: {fileID: 0}
   _scoreText: {fileID: 0}
   _currentLevelBar: 0
   levelXpBar: 64000000c8000000

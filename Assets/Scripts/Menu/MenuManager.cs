@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
     {
         _creditsPanel.SetActive(true);
     }
-
+    
     public void QuitCredit()
     {
         _creditsPanel.SetActive(false);
