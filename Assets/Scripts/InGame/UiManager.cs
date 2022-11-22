@@ -17,5 +17,11 @@ public class UiManager : MonoBehaviour
         // _lifeBar.fillAmount =
         _killText.SetText(GameData._kill.ToString());
         _coolDownUltText.SetText("88");
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Time.timeScale = 0;
+            _xpPanel.SetActive(!_xpPanel.activeSelf);
+        }
     }
 }

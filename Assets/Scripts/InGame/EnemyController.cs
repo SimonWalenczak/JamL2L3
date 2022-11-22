@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] float _speed = 4;
+    [SerializeField] float _speed = 4f;
     [SerializeField] int _xp = 4;
+    [SerializeField] int _score = 10;
 
     private GameObject _player;
     private Rigidbody2D _rb;
@@ -83,6 +84,7 @@ public class EnemyController : MonoBehaviour
         Destroy(this.gameObject, 5);
 
         _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
+        GameData._kill++;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

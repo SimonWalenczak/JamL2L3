@@ -9,9 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _speed = 5;
     [SerializeField] Rigidbody2D rb;
 
-    [SerializeField] float _coolDown = 2;
+    [SerializeField] float _coolDownAttack = 2;
+    private float _timerCoolDownAttack;
 
-    private float _timerCoolDown;
+    public float CoolDownUlt = 10f;
 
     [Header("Invincibility frames")]
     [SerializeField] private float invincibilityTime;
@@ -44,17 +45,22 @@ public class PlayerController : MonoBehaviour
                     isTouched = false;
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                //Fonction de l'ult
+            }
         }     
     }
 
     private void Shoot()
     {
-        _timerCoolDown += Time.deltaTime;
+        _timerCoolDownAttack += Time.deltaTime;
 
-        if (_timerCoolDown < _coolDown)
+        if (_timerCoolDownAttack < _coolDownAttack)
             return;
 
-        _timerCoolDown -= _coolDown;
+        _timerCoolDownAttack -= _coolDownAttack;
         GameObject go = GameObject.Instantiate(_prefabBullet, transform.position, Quaternion.identity);
 
         EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
