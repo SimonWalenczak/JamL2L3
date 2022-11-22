@@ -21,6 +21,11 @@ public class MainGameplay : MonoBehaviour
         GameData._totalXp = 0;
     }
 
+    public void AddToList(GameObject enemy)
+    {
+        _enemyControllers.Add(enemy.GetComponent<EnemyController>());
+    }
+
     public EnemyController GetClosestEnemy( Vector3 position  )
     {
         float bestDistance = float.MaxValue;

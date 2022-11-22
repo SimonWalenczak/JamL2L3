@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
     {
         GameObject player = GameObject.Find("Player");
         Initialize(player);
+        MainGameplay.Instance.AddToList(this.gameObject);
     }
 
     public void Initialize( GameObject player )

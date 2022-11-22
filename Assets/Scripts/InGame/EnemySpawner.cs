@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        Spawn();
         StartCoroutine(TickSpawn());
     }
 
@@ -30,9 +31,8 @@ public class EnemySpawner : MonoBehaviour
 
         Vector2 spawnPoint = new Vector2(X, Y);
 
-        float distanceFromSpawn = Vector3.Distance(this.transform.position, spawnPoint);
-        Debug.Log(distanceFromSpawn);
-;
+        float distanceFromSpawn = Vector3.Magnitude(new Vector3(X, Y, 0f) - this.transform.position);
+        
         bool spawn = false;
         
         while (spawn == true)
@@ -41,13 +41,16 @@ public class EnemySpawner : MonoBehaviour
             {
                 if (distanceFromSpawn < radiusMinMax.x)
                 {
-                    Instantiate(enemySpawn, new Vector3(radiusMinMax.x, radiusMinMax.y, 0f), Quaternion.identity);
-                    spawn = true;
+                    Debug.Log(distanceFromSpawn);
+                    Instantiate(enemySpawn, new Vector3(X, Y, 0f), Quaternion.identity);
+                    spawn = true;                   
                 }
             }
-        }
+            X = Random.Range(radiusMinMax.x, radiusMinMax.y);
+            Y = Random.Range(radiusMinMax.x, radiusMinMax.y);
 
-        
+            distanceFromSpawn = Vector3.Magnitude(new Vector3(X, Y, 0f) - this.transform.position);
+        }      
     }
 
     void OnDrawGizmosSelected()
