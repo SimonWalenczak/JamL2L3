@@ -100,10 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72234ab1ba934a944b689279ce53ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
-  _xp: 4
-  _score: 10
-  invincibilityTime: 0.25
+  _speed: 6
+  _xp: 10
+  _score: 30
+  invincibilityTime: 0.7
   attackForce: 10
   scaleChange: {x: -0.1, y: -0.1, z: -0.1}
   rotationSpeed: 2

@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72234ab1ba934a944b689279ce53ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2.5
-  _xp: 4
+  _speed: 4
+  _xp: 5
   _score: 10
   invincibilityTime: 0.5
   attackForce: 7

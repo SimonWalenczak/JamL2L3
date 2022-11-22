@@ -100,11 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72234ab1ba934a944b689279ce53ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
-  _xp: 4
-  _score: 10
-  invincibilityTime: 0.25
-  attackForce: 10
+  _speed: 2.5
+  _xp: 20
+  _score: 60
+  invincibilityTime: 0.2
+  attackForce: 15
+  scaleChange: {x: -0.1, y: -0.1, z: -0.1}
+  rotationSpeed: 2
 --- !u!58 &14303562397558264
 CircleCollider2D:
   m_ObjectHideFlags: 0
