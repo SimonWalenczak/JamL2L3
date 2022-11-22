@@ -14,9 +14,13 @@ public class MenuManager : MonoBehaviour
 
     public void Credits()
     {
+        _creditsPanel.SetActive(true);
+    }
+
+    public void QuitCredit()
+    {
         _creditsPanel.SetActive(false);
     }
-    
     public void Quit()
     {
         //If we are running in a standalone build of the game
