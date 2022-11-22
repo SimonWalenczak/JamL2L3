@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private bool dead = false;
     public GameObject lastEnemyTouched = null;
 
+    public LayerMask enemies;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -131,5 +133,16 @@ public class PlayerController : MonoBehaviour
         dead = true;
         _animator.SetBool("_isDead", true);
         rb.velocity = (transform.position - lastEnemyTouched.transform.position) * 3f;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (UnityExtensions.Contains(enemies, collision.gameObject.layer))
+        {
+            if (collision.gameObject.GetComponent<EnemyController>().isTouched == true)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.position - transform.position, ForceMode2D.Force);
+            }
+        }
     }
 }
