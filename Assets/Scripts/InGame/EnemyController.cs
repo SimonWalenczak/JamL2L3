@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public UpgradeManager _upgradeManager;
     [SerializeField] float _speed = 4f;
     [SerializeField] int _xp = 4;
     [SerializeField] int _score = 10;
@@ -104,7 +105,7 @@ public class EnemyController : MonoBehaviour
         _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
         GameData._kill++;
         GameData._currentXp += _xp;
-        GameData._score += _score;
+        GameData._score += ((int)(_score * _upgradeManager.MultiplyScoreUpValue[_upgradeManager.MultiplyScoreIndex]));
     }
     
     public void DieHole()
@@ -118,7 +119,7 @@ public class EnemyController : MonoBehaviour
         _rb.velocity = (transform.position - _player.transform.position) * 1.5f;
         GameData._kill++;
         GameData._currentXp += _xp;
-        GameData._score += _score;
+        GameData._score += ((int)(_score * _upgradeManager.MultiplyScoreUpValue[_upgradeManager.MultiplyScoreIndex]));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -5,11 +5,9 @@ using UnityEngine;
 public class MainGameplay : MonoBehaviour
 {
     public static MainGameplay Instance;
-
-    [SerializeField] GameObject _player;
+    
     [SerializeField] List<EnemyController> _enemyControllers;
-
-
+    
     private void Awake()
     {
         Instance = this;

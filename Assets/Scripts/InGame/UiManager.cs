@@ -20,7 +20,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] List<int> levelXpBar = new List<int>();
 
     private bool _isPaused;
-
+    public bool _inUpgradeMode;
+    
     [SerializeField] PlayerController _playerController;
     private void Update()
     {
@@ -38,28 +39,23 @@ public class UiManager : MonoBehaviour
             _coolDownUltText.SetText(((int)(_playerController._currentCoolDownUlt)).ToString());
             _pressSpaceText.gameObject.SetActive(false);
         }
-        
-        #region Debug
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            GameData._currentXp += 10;
-        }
-        #endregion
 
         #region Affichage XP
         if (_currentLevelBar+1 < levelXpBar.Count && GameData._currentXp >= levelXpBar[_currentLevelBar])
-        { 
+        {
+            _inUpgradeMode = true;
             GameData._currentXp = 0; 
             _currentLevelBar++;
         }
         if (_currentLevelBar+1 == levelXpBar.Count && GameData._currentXp >= levelXpBar[_currentLevelBar])
         { 
+            _inUpgradeMode = true;
             GameData._currentXp = levelXpBar[_currentLevelBar];
         }
         #endregion
 
         #region Pause
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!_inUpgradeMode && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!_isPaused)
             {
@@ -76,5 +72,8 @@ public class UiManager : MonoBehaviour
             _pausedMenu.SetActive(!_pausedMenu.activeSelf);
         }
         #endregion
+
+        if (Input.GetKeyDown(KeyCode.O))
+            GameData._currentXp += 10;
     }
 }

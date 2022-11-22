@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] GameObject _prefabBullet;
     [SerializeField] GameObject _ultimateArea;
     [SerializeField] float ultimateTime;
-    [SerializeField] float _speed = 5;
+    public float _speed = 5;
     [SerializeField] Rigidbody2D rb;
 
     //[SerializeField] float _coolDownAttack = 2;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 scale;
     
     [Header("Invincibility frames")]
-    [SerializeField] private float invincibilityTime;
+    public float invincibilityTime;
     [System.NonSerialized] public bool isTouched = false;
     private float timer;
 

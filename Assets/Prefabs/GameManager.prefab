@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8279632321721760168}
   - component: {fileID: 8279632321721760170}
   - component: {fileID: 8279632321721760172}
+  - component: {fileID: 1909550779140045709}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec80b540a58b3244ba740d5528949a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _enemyControllers:
   - {fileID: 0}
 --- !u!114 &8279632321721760170
@@ -70,6 +70,7 @@ MonoBehaviour:
   _scoreText: {fileID: 0}
   _currentLevelBar: 0
   levelXpBar: 64000000c8000000
+  _inUpgradeMode: 0
   _playerController: {fileID: 0}
 --- !u!114 &8279632321721760172
 MonoBehaviour:
@@ -84,3 +85,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chronoTxt: {fileID: 0}
+--- !u!114 &1909550779140045709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8279632321721760167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e339fab44879640bfb59c28a076c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradePanel: {fileID: 0}
+  _playerController: {fileID: 0}
+  _basicAttack: {fileID: 0}
+  _playerAttack: {fileID: 0}
+  _uiManager: {fileID: 8279632321721760170}
+  ShootPowerButton: {fileID: 0}
+  ShootPowerUpValue: 0
+  ShootPowerIndex: 0
+  MultiplyScoreButton: {fileID: 0}
+  MultiplyScoreUpValue:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  MultiplyScoreIndex: 0
+  CoolDownReductionButton: {fileID: 0}
+  CoolDownReductionUpValue: 0
+  CoolDownReductionIndex: 0
+  MoveSpeedButton: {fileID: 0}
+  MoveSpeedUpValue: 0
+  MoveSpeedIndex: 0
+  WeightButton: {fileID: 0}
+  WeightUpValue: 0
+  WeightIndex: 0
+  ShootSpeedButton: {fileID: 0}
+  ShootSpeedUpValue: 0
+  ShootSpeedIndex: 0

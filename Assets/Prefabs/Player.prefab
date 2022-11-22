@@ -54,8 +54,8 @@ MonoBehaviour:
   ultimateTime: 0.8
   _speed: 5
   rb: {fileID: 0}
-  _currentCoolDownUlt: 10
-  _maxCurrentCoolDownUlt: 0
+  _currentCoolDownUlt: 0
+  _maxCurrentCoolDownUlt: 5
   _weapon: {fileID: 7278737093797419185}
   invincibilityTime: 0.3
   lastEnemyTouched: {fileID: 0}
