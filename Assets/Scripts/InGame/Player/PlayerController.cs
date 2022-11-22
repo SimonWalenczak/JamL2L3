@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _coolDownAttack = 2;
     private float _timerCoolDownAttack;
 
-    public  float _currentCoolDownUlt = GameData.CoolDownUlt;
+    public float _currentCoolDownUlt;
+    public float _maxCurrentCoolDownUlt;
 
     private Animator _animator;
 
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         scale = transform.localScale;
+        _currentCoolDownUlt = _maxCurrentCoolDownUlt;
     }
 
     void Update()
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
             if (_currentCoolDownUlt <= 0 && Input.GetKeyDown(KeyCode.Space))
             {
                 StartCoroutine(Ultimate());
-                _currentCoolDownUlt = GameData.CoolDownUlt;
+                _currentCoolDownUlt = _maxCurrentCoolDownUlt;
             }
         }     
     }
@@ -86,7 +88,6 @@ public class PlayerController : MonoBehaviour
             direction.Normalize();
             go.GetComponent<Bullet>().Initialize(direction);
         }
-
     }
 
     IEnumerator Ultimate()
