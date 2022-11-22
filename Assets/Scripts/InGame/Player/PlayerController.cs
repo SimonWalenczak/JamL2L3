@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private float _timerCoolDownAttack;
 
     public  float _currentCoolDownUlt = GameData.CoolDownUlt;
+
+    private Animator _animator;
     
     [Header("Invincibility frames")]
     [SerializeField] private float invincibilityTime;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -38,11 +41,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                _animator.SetBool("_isHit", true);
                 timer += Time.deltaTime;
                 if (timer >= invincibilityTime)
                 {
                     timer = 0;
                     isTouched = false;
+                    _animator.SetBool("_isHit", false);
                 }
             }
 
@@ -87,11 +92,13 @@ public class PlayerController : MonoBehaviour
 
         if (direction.sqrMagnitude > 0)
         {
+            _animator.SetBool("_isMoving", true);
             direction.Normalize();
             rb.velocity = direction * _speed;
         }
         else
         {
+            _animator.SetBool("_isMoving", false);
             rb.velocity = Vector2.zero;
         }
     }
@@ -101,7 +108,7 @@ public class PlayerController : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         Destroy(collider);
         dead = true;
-
+        _animator.SetBool("_isDead", true);
         rb.velocity = (transform.position - lastEnemyTouched.transform.position) * 3f;
     }
 }
