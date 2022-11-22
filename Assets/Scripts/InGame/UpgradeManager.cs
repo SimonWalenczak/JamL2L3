@@ -15,7 +15,7 @@ public class UpgradeManager : MonoBehaviour
     [Header("Value Upgrade\n")] 
     [Header("Value ShootPower")]
     public GameObject ShootPowerButton;
-    public int ShootPowerUpValue;
+    public float ShootPowerUpValue;
     public int ShootPowerIndex = 0;
     
     [Header("Value MultiplyScore")]
@@ -25,22 +25,22 @@ public class UpgradeManager : MonoBehaviour
     
     [Header("Value CoolDownReduction")]
     public GameObject CoolDownReductionButton;
-    public int CoolDownReductionUpValue;
+    public float CoolDownReductionUpValue;
     public int CoolDownReductionIndex = 0;
     
     [Header("Value MoveSpeed")]
     public GameObject MoveSpeedButton;
-    public int MoveSpeedUpValue;
+    public float MoveSpeedUpValue;
     public int MoveSpeedIndex = 0;
     
     [Header("Value Weight")]
     public GameObject WeightButton;
-    public int WeightUpValue;
+    public float WeightUpValue;
     public int WeightIndex = 0;
     
     [Header("Value ShootSpeed")]
     public GameObject ShootSpeedButton;
-    public int ShootSpeedUpValue;
+    public float ShootSpeedUpValue;
     public int ShootSpeedIndex = 0;
 
     private void Update()
