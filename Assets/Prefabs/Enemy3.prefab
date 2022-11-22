@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 14303562397558264}
   - component: {fileID: 7350168301443706547}
   - component: {fileID: -2202120896654627673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +103,8 @@ MonoBehaviour:
   _speed: 4
   _xp: 4
   _score: 10
-  invincibilityTime: 0
-  attackForce: 0
+  invincibilityTime: 0.25
+  attackForce: 10
 --- !u!58 &14303562397558264
 CircleCollider2D:
   m_ObjectHideFlags: 0

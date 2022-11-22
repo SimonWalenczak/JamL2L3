@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _weight: 1
   _xp: 4
+  _score: 10
   invincibilityTime: 0.25
   attackForce: 10
 --- !u!58 &14303562397558264
