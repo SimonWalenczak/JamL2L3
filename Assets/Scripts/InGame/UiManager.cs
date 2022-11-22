@@ -11,12 +11,16 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image _lifeBar;
     [SerializeField] private TextMeshProUGUI _killText;
     [SerializeField] private TextMeshProUGUI _coolDownUltText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+
+    private int levelXpBar = 0;
 
     private void Update()
     {
-        // _lifeBar.fillAmount =
-        _killText.SetText(GameData._kill.ToString());
+        //_lifeBar.fillAmount = GameData.
         _coolDownUltText.SetText("88");
+        _killText.SetText(GameData._kill.ToString());
+        _scoreText.SetText(GameData._score.ToString());
 
         if (Input.GetKeyDown(KeyCode.P))
         {

@@ -9,5 +9,7 @@ public class GameData
     public static int _coolDownUltReduc = 0; //per second
 
     public static int _kill;
+    public static int _currentXp = 0;
     public static int _totalXp = 0;
+    public static int _score = 0;
 }
