@@ -13,6 +13,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private Image _xpBar;
     [SerializeField] private TextMeshProUGUI _killText;
     [SerializeField] private TextMeshProUGUI _coolDownUltText;
+    [SerializeField] private TextMeshProUGUI _pressSpaceText;
     [SerializeField] private TextMeshProUGUI _scoreText;
 
     [SerializeField] private int _currentLevelBar = 0;
@@ -30,10 +31,12 @@ public class UiManager : MonoBehaviour
         if (_playerController._currentCoolDownUlt <= 0)
         {
             _coolDownUltText.SetText("");
+            _pressSpaceText.gameObject.SetActive(true);
         }
         else
         {
             _coolDownUltText.SetText(((int)(_playerController._currentCoolDownUlt)).ToString());
+            _pressSpaceText.gameObject.SetActive(false);
         }
         
         #region Debug

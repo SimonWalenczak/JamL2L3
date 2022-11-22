@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _coolDownAttack = 2;
     private float _timerCoolDownAttack;
 
-    public  float _currentCoolDownUlt = GameData.CoolDownUlt;
+    public float _currentCoolDownUlt;
+    public float _maxCurrentCoolDownUlt;
 
     private Animator _animator;
+
+    private Vector2 scale;
     
     [Header("Invincibility frames")]
     [SerializeField] private float invincibilityTime;
@@ -26,10 +29,14 @@ public class PlayerController : MonoBehaviour
     private bool dead = false;
     public GameObject lastEnemyTouched = null;
 
+    public LayerMask enemies;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        scale = transform.localScale;
+        _currentCoolDownUlt = _maxCurrentCoolDownUlt;
     }
 
     void Update()
@@ -58,7 +65,7 @@ public class PlayerController : MonoBehaviour
             if (_currentCoolDownUlt <= 0 && Input.GetKeyDown(KeyCode.Space))
             {
                 StartCoroutine(Ultimate());
-                _currentCoolDownUlt = GameData.CoolDownUlt;
+                _currentCoolDownUlt = _maxCurrentCoolDownUlt;
             }
         }     
     }
@@ -81,7 +88,6 @@ public class PlayerController : MonoBehaviour
             direction.Normalize();
             go.GetComponent<Bullet>().Initialize(direction);
         }
-
     }
 
     IEnumerator Ultimate()
@@ -104,6 +110,15 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("_isMoving", true);
             direction.Normalize();
             rb.velocity = direction * _speed;
+
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector2(scale.x, scale.y);
+            }
+            if (direction.x < 0)
+            {
+                transform.localScale = new Vector2(-scale.x, scale.y);
+            }
         }
         else
         {
@@ -119,5 +134,16 @@ public class PlayerController : MonoBehaviour
         dead = true;
         _animator.SetBool("_isDead", true);
         rb.velocity = (transform.position - lastEnemyTouched.transform.position) * 3f;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (UnityExtensions.Contains(enemies, collision.gameObject.layer))
+        {
+            if (collision.gameObject.GetComponent<EnemyController>().isTouched == true)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.position - transform.position, ForceMode2D.Force);
+            }
+        }
     }
 }
