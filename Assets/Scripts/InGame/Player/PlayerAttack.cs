@@ -7,8 +7,8 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack Variables")]
     [SerializeField] private GameObject attackArea;
     private bool isAttacking;
-    [SerializeField] private float timeToAttack;
-    [SerializeField] private float timeBetweenAttacks;
+    [SerializeField] public float timeToAttack;
+    [SerializeField] public float timeBetweenAttacks;
 
     private float timerAttack = 0;
     private float timerBetweenAttacks = 0;
