@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class MainGameplay : MonoBehaviour
     public static MainGameplay Instance;
     public GameObject _player;
     [SerializeField] List<EnemyController> _enemyControllers;
+
+    [SerializeField] private GameObject tutorial;
     
     private void Awake()
     {
@@ -14,6 +17,17 @@ public class MainGameplay : MonoBehaviour
         GameData._kill = 0;
         GameData._currentXp = 0;
         GameData._score = 0;
+    }
+
+    private void Start()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void DesactiveTuto()
+    {
+        tutorial.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void AddToList(GameObject enemy)
