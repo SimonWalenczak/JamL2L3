@@ -12,6 +12,15 @@ public class FinalSceneManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _killText;
 
     [SerializeField] private GameObject _slider;
+    
+    public AudioManager _audioManager;
+    private AudioSource _audioSource;
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         _scoreText.SetText("Score : " + GameData._score.ToString());
@@ -21,6 +30,8 @@ public class FinalSceneManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        _audioSource.clip = _audioManager.AudioClips[0];
+        _audioSource.Play();
         _slider.SetActive(true);
         StartCoroutine(SwitchScene());
     }
